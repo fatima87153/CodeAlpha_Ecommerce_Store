@@ -1,12 +1,8 @@
-# NEXIS TECH — Full Stack E-Commerce Store
+ NEXIS TECH — Full Stack E-Commerce Store
 
-A complete e-commerce web application built as **Task 1** for the CodeAlpha Full Stack Development Internship. Includes product browsing, cart, user authentication, and order processing — backed by a real Express.js + MongoDB API.
+A complete e-commerce web application built as Task 1 for the CodeAlpha Full Stack Development Internship. Includes product browsing, cart, user authentication, and order processing — backed by a real Express.js + MongoDB API.
 
-## 🚀 Live Demo
-
-*(Add your deployed link here if/when you deploy — otherwise remove this section)*
-
-## 📸 Features
+ 📸 Features
 
 - Product listing with dynamic grid (fetched from MongoDB, not hardcoded)
 - Individual product details page with quantity selector
@@ -17,27 +13,27 @@ A complete e-commerce web application built as **Task 1** for the CodeAlpha Full
 - Fully responsive design across desktop, tablet, and mobile
 - About, Products, and Find Us pages with consistent navigation and cart access
 
-## 🛠 Tech Stack
+Tech Stack
 
-**Frontend:** HTML5, CSS3, Vanilla JavaScript (no framework — DOM built dynamically from API data)
+Frontend: HTML5, CSS3, Vanilla JavaScript (no framework — DOM built dynamically from API data)
 
-**Backend:** Node.js, Express.js
+Backend: Node.js, Express.js
 
-**Database:** MongoDB (via Mongoose), hosted on MongoDB Atlas
+Database: MongoDB (via Mongoose), hosted on MongoDB Atlas
 
-**Auth:** bcryptjs (password hashing) + JSON Web Tokens (JWT)
+Auth: bcryptjs (password hashing) + JSON Web Tokens (JWT)
 
-## 🧠 Technical Concepts Implemented
+Technical Concepts Implemented
 
-- **RESTful API design** — separate routes/controllers for products, auth, and orders
-- **JWT authentication** — stateless login sessions verified via middleware (`authMiddleware.js`) on protected routes
-- **Password security** — passwords are never stored in plain text; hashed with bcrypt before saving
-- **Server-side price verification** — order totals are recalculated from the database on the backend, not trusted from the frontend, to prevent tampering
-- **MongoDB schema design** — Product, User, and Order models with Mongoose, including referenced relationships (Order → User, Order items → Product)
-- **Client-server separation** — frontend and backend are fully decoupled, communicating only via `fetch()` calls to a REST API
-- **Environment-based configuration** — sensitive values (DB connection string, JWT secret) kept out of source control via `.env` + `.gitignore`
+- RESTful API design — separate routes/controllers for products, auth, and orders
+- JWT authentication — stateless login sessions verified via middleware (`authMiddleware.js`) on protected routes
+- Password security — passwords are never stored in plain text; hashed with bcrypt before saving
+- Server-side price verification — order totals are recalculated from the database on the backend, not trusted from the frontend, to prevent tampering
+- MongoDB schema design — Product, User, and Order models with Mongoose, including referenced relationships (Order → User, Order items → Product)
+- Client-server separation — frontend and backend are fully decoupled, communicating only via `fetch()` calls to a REST API
+- Environment-based configuration — sensitive values (DB connection string, JWT secret) kept out of source control via `.env` + `.gitignore`
 
-## 📁 Project Structure
+📁 Project Structure
 
 ```
 CodeAlpha_Ecommerce_Store/
@@ -60,19 +56,18 @@ CodeAlpha_Ecommerce_Store/
 └── .gitignore
 ```
 
-## ▶ How to Run This Project
+▶ How to Run This Project
 
-### Prerequisites
+Prerequisites
 - [Node.js](https://nodejs.org) installed (v18+ recommended)
 - A free [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account (or local MongoDB)
-
-### 1. Clone the repository
+ 1. Clone the repository
 ```
 git clone https://github.com/fatima87153/CodeAlpha_Ecommerce_Store.git
 cd CodeAlpha_Ecommerce_Store
 ```
 
-### 2. Set up the backend
+2. Set up the backend
 ```
 cd nexis-backend
 npm install
@@ -96,15 +91,16 @@ npm run dev
 ```
 Server runs at `http://localhost:5000`. Confirm it works by visiting `http://localhost:5000/api/products` in your browser — you should see JSON product data.
 
-### 3. Run the frontend
+3. Run the frontend
 No build step needed — it's plain HTML/CSS/JS.
 
-- Open `nexis-frontend/index.html` directly in your browser, **or**
+- Open `nexis-frontend/index.html` directly in your browser, 
+or
 - Use VS Code's "Live Server" extension for the smoothest experience (right-click `index.html` → "Open with Live Server")
 
 Make sure the backend is running first — the frontend fetches live data from `http://localhost:5000/api/...`.
 
-### 4. Try it out
+ 4. Try it out
 1. Browse products on the home page
 2. Click a product to view its details page
 3. Sign up for an account
@@ -112,11 +108,11 @@ Make sure the backend is running first — the frontend fetches live data from `
 5. Go to checkout, fill in shipping details, and place an order
 6. See your order confirmation page
 
-## 🔒 Note on Security
+🔒 Note on Security
 
 This is a learning/internship project. The JWT secret and database credentials in `.env` are excluded from this repository via `.gitignore` for security — you'll need to generate your own when running it locally.
 
-## 👩‍💻 Author
+👩‍💻 Author
 
-**Ghulam Fatima** — Computer Engineering Technology student, IIUI
+Ghulam Fatima — Computer Engineering Technology student, IIUI
 Built as part of the CodeAlpha Full Stack Development Internship.
