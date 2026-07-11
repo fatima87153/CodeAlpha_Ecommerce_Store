@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | NEXIS TECH</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <nav>
+        <div class="logo">
+            <span>◢</span> NEXIS TECH
+        </div>
+        <a href="index.html" class="back-to-shop-btn">&larr; Back to shop</a>
+    </nav>
+
+    <section class="auth-section">
+        <div class="auth-card">
+            <h2>Welcome Back</h2>
+            <p class="auth-subtitle">Log in to continue to your account.</p>
+
+            <form id="login-form" novalidate>
+                <div class="form-row">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" name="loginEmail" placeholder="you@example.com" required>
+                    <span class="field-error" data-for="loginEmail"></span>
+                </div>
+
+                <div class="form-row">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="loginPassword" placeholder="Enter your password" required>
+                    <span class="field-error" data-for="loginPassword"></span>
+                </div>
+
+                <p class="form-general-error" id="login-general-error"></p>
+
+                <button type="submit" class="auth-submit-btn">Login</button>
+            </form>
+
+            <p class="auth-switch">Don't have an account? <a href="signup.html">Sign up</a></p>
+        </div>
+    </section>
+
+</div>
+
+<script src="auth.js"></script>
+<script>
+document.getElementById("login-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+    const errorEl = document.getElementById("login-general-error");
+    errorEl.textContent = "";
+
+    if (!email.trim() || !password.trim()) {
+        errorEl.textContent = "Please fill in both fields.";
+        return;
+    }
+
+    const submitBtn = e.target.querySelector(".auth-submit-btn");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Logging in...";
+
+    const result = await loginUser(email, password);
+
+    if (!result.success) {
+        errorEl.textContent = result.message;
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Login";
+        return;
+    }
+
+    // if the user was sent here from checkout, send them back there
+    const redirectTo = sessionStorage.getItem("nexis_redirect_after_login");
+    sessionStorage.removeItem("nexis_redirect_after_login");
+    window.location.href = redirectTo || "index.html";
+});
+</script>
+</body>
+</html>

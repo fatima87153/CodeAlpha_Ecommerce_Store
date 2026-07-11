@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed | NEXIS TECH</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <span>◢</span> NEXIS TECH
+        </div>
+        <div class="checkout-nav-right">
+            <span class="login-link">Login</span>
+            <a href="index.html" class="back-to-shop-btn">&larr; Back to shop</a>
+        </div>
+    </nav>
+
+    <!-- CONFIRMATION VIEW -->
+    <section class="confirmation-section" id="confirmation-view">
+        <div class="confirmation-card">
+            <div class="confirmation-icon">✓</div>
+            <h2>Order Confirmed!</h2>
+            <p>Thank you, <span id="confirm-name"></span>. Your order has been placed successfully.</p>
+
+            <div class="confirmation-details">
+                <div class="confirmation-row">
+                    <span>Order Number</span>
+                    <span id="confirm-order-number"></span>
+                </div>
+                <div class="confirmation-row">
+                    <span>Total Paid</span>
+                    <span id="confirm-total"></span>
+                </div>
+                <div class="confirmation-row">
+                    <span>Payment Method</span>
+                    <span id="confirm-payment"></span>
+                </div>
+                <div class="confirmation-row">
+                    <span>Delivery Address</span>
+                    <span id="confirm-address"></span>
+                </div>
+            </div>
+
+            <a href="index.html" class="continue-shopping-btn">Continue Shopping</a>
+        </div>
+    </section>
+
+</div>
+
+<script src="auth.js"></script>
+<script src="order-confirmation.js"></script>
+</body>
+</html>

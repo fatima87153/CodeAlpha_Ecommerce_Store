@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | NEXIS TECH</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <nav>
+        <div class="logo">
+            <span>◢</span> NEXIS TECH
+        </div>
+        <a href="index.html" class="back-to-shop-btn">&larr; Back to shop</a>
+    </nav>
+
+    <section class="auth-section">
+        <div class="auth-card">
+            <h2>Create Account</h2>
+            <p class="auth-subtitle">Sign up to start shopping with NEXIS TECH.</p>
+
+            <form id="signup-form" novalidate>
+                <div class="form-row">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" name="signupName" placeholder="e.g. Fatima Ahmed" required>
+                    <span class="field-error" data-for="signupName"></span>
+                </div>
+
+                <div class="form-row">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" name="signupEmail" placeholder="you@example.com" required>
+                    <span class="field-error" data-for="signupEmail"></span>
+                </div>
+
+                <div class="form-row">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="signupPassword" placeholder="At least 6 characters" required>
+                    <span class="field-error" data-for="signupPassword"></span>
+                </div>
+
+                <div class="form-row">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" name="signupConfirmPassword" placeholder="Re-enter your password" required>
+                    <span class="field-error" data-for="signupConfirmPassword"></span>
+                </div>
+
+                <p class="form-general-error" id="signup-general-error"></p>
+
+                <button type="submit" class="auth-submit-btn">Sign Up</button>
+            </form>
+
+            <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </section>
+
+</div>
+
+<script src="auth.js"></script>
+<script>
+document.getElementById("signup-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    document.querySelectorAll(".field-error").forEach(el => el.textContent = "");
+    document.getElementById("signup-general-error").textContent = "";
+
+    const name = document.getElementById("signupName").value;
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("signupConfirmPassword").value;
+
+    let isValid = true;
+
+    if (!name.trim()) {
+        document.querySelector('.field-error[data-for="signupName"]').textContent = "Full name is required";
+        isValid = false;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        document.querySelector('.field-error[data-for="signupEmail"]').textContent = "Enter a valid email address";
+        isValid = false;
+    }
+
+    if (password.length < 6) {
+        document.querySelector('.field-error[data-for="signupPassword"]').textContent = "Password must be at least 6 characters";
+        isValid = false;
+    }
+
+    if (confirmPassword !== password) {
+        document.querySelector('.field-error[data-for="signupConfirmPassword"]').textContent = "Passwords do not match";
+        isValid = false;
+    }
+
+    if (!isValid) return;
+
+    const submitBtn = e.target.querySelector(".auth-submit-btn");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Creating account...";
+
+    const result = await registerUser(name, email, password);
+
+    if (!result.success) {
+        document.getElementById("signup-general-error").textContent = result.message;
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Sign Up";
+        return;
+    }
+
+    const redirectTo = sessionStorage.getItem("nexis_redirect_after_login");
+    sessionStorage.removeItem("nexis_redirect_after_login");
+    window.location.href = redirectTo || "index.html";
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | NEXIS TECH</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <span>◢</span> NEXIS TECH
+        </div>
+        <div class="checkout-nav-right">
+            <span class="login-link">Login</span>
+            <a href="index.html" class="back-to-shop-btn">&larr; Back to shop</a>
+        </div>
+    </nav>
+
+    <!-- CHECKOUT FORM VIEW -->
+    <section class="checkout-section" id="checkout-form-view">
+        <h2>Checkout</h2>
+        <p class="checkout-subtitle">Almost there — just a few details before we ship your order.</p>
+
+        <div class="checkout-layout">
+
+            <!-- SHIPPING FORM -->
+            <form class="shipping-form" id="shipping-form" novalidate>
+                <h3>Shipping Details</h3>
+
+                <div class="form-row">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="e.g. Fatima Ahmed" required>
+                    <span class="field-error" data-for="fullName"></span>
+                </div>
+
+                <div class="form-row">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <span class="field-error" data-for="email"></span>
+                </div>
+
+                <div class="form-row">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="03xx-xxxxxxx" required>
+                    <span class="field-error" data-for="phone"></span>
+                </div>
+
+                <div class="form-row">
+                    <label for="address">Street Address</label>
+                    <input type="text" id="address" name="address" placeholder="House #, street, area" required>
+                    <span class="field-error" data-for="address"></span>
+                </div>
+
+                <div class="form-row-group">
+                    <div class="form-row">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" placeholder="Rawalpindi" required>
+                        <span class="field-error" data-for="city"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="postalCode">Postal Code</label>
+                        <input type="text" id="postalCode" name="postalCode" placeholder="46000" required>
+                        <span class="field-error" data-for="postalCode"></span>
+                    </div>
+                </div>
+
+                <h3 class="payment-heading">Payment Method</h3>
+
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="cod" checked>
+                        <span>Cash on Delivery</span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="card">
+                        <span>Credit / Debit Card</span>
+                    </label>
+                </div>
+
+                <!-- Card fields, shown only if Card is selected -->
+                <div class="card-fields" id="card-fields" hidden>
+                    <div class="form-row">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                        <span class="field-error" data-for="cardNumber"></span>
+                    </div>
+                    <div class="form-row-group">
+                        <div class="form-row">
+                            <label for="cardExpiry">Expiry</label>
+                            <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" maxlength="5">
+                            <span class="field-error" data-for="cardExpiry"></span>
+                        </div>
+                        <div class="form-row">
+                            <label for="cardCvv">CVV</label>
+                            <input type="text" id="cardCvv" name="cardCvv" placeholder="123" maxlength="3">
+                            <span class="field-error" data-for="cardCvv"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="place-order-btn">Place Order</button>
+            </form>
+
+            <!-- ORDER SUMMARY -->
+            <aside class="order-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-items" id="summary-items"></div>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="summary-subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="summary-shipping">$0.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span id="summary-total">$0.00</span>
+                </div>
+            </aside>
+
+        </div>
+    </section>
+
+</div>
+
+<div class="toast"></div>
+
+<script src="auth.js"></script>
+<script src="checkout.js"></script>
+</body>
+</html>

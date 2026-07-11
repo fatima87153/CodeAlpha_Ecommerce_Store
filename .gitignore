@@ -1,0 +1,4 @@
+nexis-backend/node_modules/
+nexis-backend/.env
+.DS_Store
+Thumbs.db
